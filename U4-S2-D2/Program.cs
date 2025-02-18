@@ -1,4 +1,5 @@
-﻿using U4_S2_D2.Models;
+﻿using Microsoft.VisualBasic;
+using U4_S2_D2.Models;
 
 namespace U4_S2_D2
 {
@@ -42,6 +43,7 @@ namespace U4_S2_D2
                 Telefono = telefono,
                 Email = email
             };
+
 
             List<Studi> listaStudi = new List<Studi>();
 
@@ -145,35 +147,55 @@ namespace U4_S2_D2
                 Console.WriteLine("Risposta non valida. Riprovare.");
                 goto ContinuareEsperienze;
             }
+
+            CV cv = new CV
+            {
+                Informazioni = informazioni,
+                Studi = listaStudi,
+                Impiego = listaImpieghi
+            };
+
             Console.WriteLine("\r\nPremere un tasto per proseguire e visualizzare il proprio CV compilato");
-            Console.WriteLine($"CV di {nome} {cognome}");
-            Console.WriteLine("\r\n++++ INIZIO Informazioni Personali ++++" +
-                $"\r\n\r\nNome: {informazioni.Nome}" +
-                $"\r\nCognome: {informazioni.Cognome}" +
-                $"\r\nTelefono: {informazioni.Telefono}" +
-                $"\r\nEmail: {informazioni.Email}" +
+            Console.ReadLine();
+            {
+                PrintCV(cv);
+            };
+
+        }
+
+        static void PrintCV(CV cv)
+        {
+            static void PrintCV(CV cv)
+            {
+                Console.WriteLine($"CV di {cv.Informazioni.Nome} {cv.Informazioni.Cognome}");
+                Console.WriteLine("\r\n++++ INIZIO Informazioni Personali ++++" +
+                    $"\r\n\r\nNome: {cv.Informazioni.Nome}" +
+                    $"\r\nCognome: {cv.Informazioni.Cognome}" +
+                    $"\r\nTelefono: {cv.Informazioni.Telefono}" +
+                    $"\r\nEmail: {cv.Informazioni.Email}" +
                 "\r\n\r\n++++ FINE Informazioni Personali ++++");
-            Console.WriteLine("\r\n++++ INIZIO Studi e Formazione++++");
-            foreach (var item in listaStudi)
-            {
-                Console.WriteLine($"\r\nQualifica: {item.Qualifica}" +
-                    $"\r\nIstituto: {item.Istituto}" +
-                    $"\r\nTipo: {item.Tipo}" +
-                    $"\r\nData di inizio: {item.DataInizio:MM/yyyy}" +
-                    $"\r\nData di fine: {item.DataFine:MM/yyyy}");
+                Console.WriteLine("\r\n++++ INIZIO Studi e Formazione++++");
+                foreach (var item in cv.Studi)
+                {
+                    Console.WriteLine($"\r\nQualifica: {item.Qualifica}" +
+                        $"\r\nIstituto: {item.Istituto}" +
+                        $"\r\nTipo: {item.Tipo}" +
+                        $"\r\nData di inizio: {item.DataInizio:MM/yyyy}" +
+                        $"\r\nData di fine: {item.DataFine:MM/yyyy}");
+                }
+                Console.WriteLine("\r\n++++ FINE Studi e Formazione ++++");
+                Console.WriteLine("\r\n++++ INIZIO Esperienze professionali ++++");
+                foreach (var item in cv.Impiego)
+                {
+                    Console.WriteLine($"\r\nAzienda: {item.Esperienza.Azienda}" +
+                        $"\r\nJobTitle: {item.Esperienza.JobTitle}" +
+                        $"\r\nData di inizio: {item.Esperienza.DataInizio:MM/yyyy}" +
+                        $"\r\nData di fine: {item.Esperienza.DataFine:MM/yyyy}" +
+                        $"\r\nDescrizione: {item.Esperienza.Descrizione}" +
+                        $"\r\nCompiti: {item.Esperienza.Compiti}");
+                }
+                Console.WriteLine("\r\n++++ FINE Esperienze professionali ++++");
             }
-            Console.WriteLine("\r\n++++ FINE Studi e Formazione ++++");
-            Console.WriteLine("\r\n++++ INIZIO Esperienze professionali ++++");
-            foreach (var item in listaImpieghi)
-            {
-                Console.WriteLine($"\r\nAzienda: {item.Esperienza.Azienda}" +
-                    $"\r\nJobTitle: {item.Esperienza.JobTitle}" +
-                    $"\r\nData di inizio: {item.Esperienza.DataInizio:MM/yyyy}" +
-                    $"\r\nData di fine: {item.Esperienza.DataFine:MM/yyyy}" +
-                    $"\r\nDescrizione: {item.Esperienza.Descrizione}" +
-                    $"\r\nCompiti: {item.Esperienza.Compiti}");
-            }
-            Console.WriteLine("\r\n++++ FINE Esperienze professionali ++++");
         }
     }
 }
