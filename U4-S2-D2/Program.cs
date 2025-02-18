@@ -148,19 +148,19 @@ namespace U4_S2_D2
             Console.WriteLine("\r\nPremere un tasto per proseguire e visualizzare il proprio CV compilato");
             Console.WriteLine($"CV di {nome} {cognome}");
             Console.WriteLine("\r\n++++ INIZIO Informazioni Personali ++++" +
-                $"\r\nNome: {informazioni.Nome}" +
+                $"\r\n\r\nNome: {informazioni.Nome}" +
                 $"\r\nCognome: {informazioni.Cognome}" +
                 $"\r\nTelefono: {informazioni.Telefono}" +
                 $"\r\nEmail: {informazioni.Email}" +
-                "\r\n++++ FINE Informazioni Personali ++++");
+                "\r\n\r\n++++ FINE Informazioni Personali ++++");
             Console.WriteLine("\r\n++++ INIZIO Studi e Formazione++++");
             foreach (var item in listaStudi)
             {
                 Console.WriteLine($"\r\nQualifica: {item.Qualifica}" +
                     $"\r\nIstituto: {item.Istituto}" +
                     $"\r\nTipo: {item.Tipo}" +
-                    $"\r\nData di inizio: {item.DataInizio}" +
-                    $"\r\nData di fine: {item.DataFine}");
+                    $"\r\nData di inizio: {item.DataInizio:MM/yyyy}" +
+                    $"\r\nData di fine: {item.DataFine:MM/yyyy}");
             }
             Console.WriteLine("\r\n++++ FINE Studi e Formazione ++++");
             Console.WriteLine("\r\n++++ INIZIO Esperienze professionali ++++");
@@ -168,8 +168,8 @@ namespace U4_S2_D2
             {
                 Console.WriteLine($"\r\nAzienda: {item.Esperienza.Azienda}" +
                     $"\r\nJobTitle: {item.Esperienza.JobTitle}" +
-                    $"\r\nData di inizio: {item.Esperienza.DataInizio}" +
-                    $"\r\nData di fine: {item.Esperienza.DataFine}" +
+                    $"\r\nData di inizio: {item.Esperienza.DataInizio:MM/yyyy}" +
+                    $"\r\nData di fine: {item.Esperienza.DataFine:MM/yyyy}" +
                     $"\r\nDescrizione: {item.Esperienza.Descrizione}" +
                     $"\r\nCompiti: {item.Esperienza.Compiti}");
             }
